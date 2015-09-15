@@ -20,6 +20,9 @@ public interface MemberRepository extends Repository<Member, Integer> {
 	
 	public List<Member> findByIdGreaterThanOrNameLike(Integer id, String name);
 	
+	@Query("select m.* from JPA_MEMBER m where m.ID = ?")
+	public Member queryForSql(Integer id);
+	
 	@Query("from Member m where m.id = ?")
 	public Member query(Integer id);
 	
@@ -52,6 +55,7 @@ public interface MemberRepository extends Repository<Member, Integer> {
 	
 	@Query("from Member m where m.name like %:name%")
 	public Member findForLike3(@Param("name") String name);
+	
 }
 
 

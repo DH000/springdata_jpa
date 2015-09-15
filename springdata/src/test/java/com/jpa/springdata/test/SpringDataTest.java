@@ -29,6 +29,10 @@ public class SpringDataTest {
 		memberRepository.query(1);
 	}
 	
+	public void testSql(){
+		memberRepository.queryForSql(1);
+	}
+	
 	@Test
 	public void testQueryByParams(){
 		memberRepository.query2(1, "test");
