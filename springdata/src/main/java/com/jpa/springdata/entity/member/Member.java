@@ -39,6 +39,7 @@ public class Member implements Serializable {
 		this.name = name;
 		this.age = age;
 		this.birthDay = birthDay;
+		this.registerDate = new Date();
 	}
 
 	@Id

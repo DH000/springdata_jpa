@@ -2,8 +2,10 @@ package com.jpa.springdata.repository.member;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
 import com.jpa.springdata.entity.member.Member;
@@ -14,13 +16,13 @@ import com.jpa.springdata.entity.member.Member;
  * @author xuelin
  * @date   Sep 15, 2015
  */
-public interface MemberRepository extends Repository<Member, Integer> {
+public interface MemberRepository extends JpaRepository<Member, Integer>, JpaSpecificationExecutor<Member> {
 
 	public Member findById(Integer id);
 	
 	public List<Member> findByIdGreaterThanOrNameLike(Integer id, String name);
 	
-	@Query("select m.* from JPA_MEMBER m where m.ID = ?")
+	@Query(value = "select m.* from JPA_MEMBER m where m.ID = ?", nativeQuery = true)
 	public Member queryForSql(Integer id);
 	
 	@Query("from Member m where m.id = ?")
@@ -55,6 +57,14 @@ public interface MemberRepository extends Repository<Member, Integer> {
 	
 	@Query("from Member m where m.name like %:name%")
 	public Member findForLike3(@Param("name") String name);
+	
+	@Modifying
+	@Query("update Member m set m.name = ? where m.id = ?")
+	public void updateMember(String name, Integer id);
+	
+	@Modifying
+	@Query("delete from Member m where m.id = ?")
+	public void deleteMember(Integer id);
 	
 }
 
