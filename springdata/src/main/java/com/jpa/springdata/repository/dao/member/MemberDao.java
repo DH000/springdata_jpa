@@ -1,4 +1,4 @@
-package com.jpa.springdata.dao.member;
+package com.jpa.springdata.repository.dao.member;
 
 import com.jpa.springdata.entity.member.Member;
 

@@ -83,8 +83,8 @@ public class SpringDataTest {
 	public void testPageAndSortMembers(){
 		Page<Member> page = memberService.findByPage(2, 10);
 		System.out.println("当前页码：" + page.getNumber());
-		System.out.println("当前页记录数：" + page.getNumberOfElements());
-		System.out.println("总记录数：" + page.getSize());
+		System.out.println("当前页记录数：" + page.getSize());
+		System.out.println("总记录数：" + page.getTotalElements());
 		System.out.println("总页码：" + page.getTotalPages());
 		System.out.println("内容：" + page.getContent());
 	}
@@ -93,8 +93,8 @@ public class SpringDataTest {
 	public void testPageAndSortMembersByProperty(){
 		Page<Member> page = memberService.findByPropertyForPage(2, 8);
 		System.out.println("当前页码：" + page.getNumber());
-		System.out.println("当前页记录数：" + page.getNumberOfElements());
-		System.out.println("总记录数：" + page.getSize());
+		System.out.println("当前页记录数：" + page.getSize());
+		System.out.println("总记录数：" + page.getTotalElements());
 		System.out.println("总页码：" + page.getTotalPages());
 		System.out.println("内容：" + page.getContent());
 	}

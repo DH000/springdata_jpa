@@ -73,7 +73,7 @@
 	<!-- END jpa事务 -->
 	
 	<!-- 配置springdata名称空间 -->
-	<jpa:repositories base-package="com.jpa.springdata.repository" entity-manager-factory-ref="entityManagerFactory" />
+	<jpa:repositories base-package="com.jpa.springdata.repository" entity-manager-factory-ref="entityManagerFactory" repository-impl-postfix="Impl" />
 	
 </beans>
 
